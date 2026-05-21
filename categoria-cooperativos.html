@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juegos Cooperativos - Lagarto Arcano</title>
+    <link rel="icon" type="image/png" href="assets/logo_lagarto.png">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- 1. Cabecera y Menú de Navegación -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo_lagarto.png" alt="Logo Lagarto Arcano" style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--color-arcane);">
+                <div class="logo-text">Lagarto<span>Arcano</span></div>
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a href="categoria-estrategia.html">Estrategia</a></li>
+                    <li class="nav-item"><a href="categoria-familiares.html">Familiares</a></li>
+                    <li class="nav-item"><a href="categoria-party.html">Party Games</a></li>
+                    <li class="nav-item active"><a href="categoria-cooperativos.html">Cooperativos</a></li>
+                    <li class="nav-item"><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 2. Encabezado de la Categoría -->
+    <section class="category-header">
+        <div class="container">
+            <h1>Juegos Cooperativos</h1>
+            <p>Aquí no compiten entre ustedes: ¡se unen contra el juego! Planifiquen en equipo, compartan recursos, asuman roles especializados y alcancen juntos la gloria o compartan la derrota.</p>
+        </div>
+    </section>
+
+    <!-- 3. Grid de Fichas de Juegos (Límite: Máx 3 Juegos) -->
+    <section class="catalog-section">
+        <div class="container">
+            <div class="catalog-grid">
+                
+                <!-- Ficha 1: Pandemic (Posee Descuento) -->
+                <article class="game-card">
+                    <div class="discount-badge">15% OFF</div>
+                    <div class="game-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1584483766114-2cea6facdf57?q=80&w=400&auto=format&fit=crop" alt="Juego de Mesa Pandemic">
+                    </div>
+                    <div class="game-content">
+                        <div>
+                            <h3 class="game-title">Pandemic</h3>
+                            <p class="game-desc">¡Salven al planeta entero de epidemias catastróficas! Encarnen a científicos, médicos y especialistas internacionales que viajan por el mundo conteniendo brotes letales mientras buscan curas desesperadas.</p>
+                        </div>
+                        <div>
+                            <div class="game-pricing">
+                                <span class="price-current">$33.140</span>
+                                <span class="price-old">$38.990</span>
+                            </div>
+                            <button class="game-btn">Consultar Disponibilidad</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Ficha 2: Isla Prohibida (Precio Regular) -->
+                <article class="game-card">
+                    <div class="regular-price-badge">Precio Regular</div>
+                    <div class="game-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=400&auto=format&fit=crop" alt="Juego de Mesa Isla Prohibida">
+                    </div>
+                    <div class="game-content">
+                        <div>
+                            <h3 class="game-title">Isla Prohibida</h3>
+                            <p class="game-desc">¡Una emocionante carrera contra el hundimiento de la isla! Coordinen habilidades en equipo para recuperar cuatro reliquias místicas ocultas en terrenos movedizos que se sumergen segundo a segundo.</p>
+                        </div>
+                        <div>
+                            <div class="game-pricing">
+                                <span class="price-current">$26.990</span>
+                            </div>
+                            <button class="game-btn">Consultar Disponibilidad</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Ficha 3: The Mind (Posee Descuento) -->
+                <article class="game-card">
+                    <div class="discount-badge">10% OFF</div>
+                    <div class="game-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1628157582853-a796fa650a6a?q=80&w=400&auto=format&fit=crop" alt="Juego de Mesa The Mind">
+                    </div>
+                    <div class="game-content">
+                        <div>
+                            <h3 class="game-title">The Mind</h3>
+                            <p class="game-desc">¡Un increíble experimento mental cooperativo! Consigan apilar en orden numérico ascendente todas las cartas de sus manos sin hablar, gesticular, ni mandarse señales explícitas.</p>
+                        </div>
+                        <div>
+                            <div class="game-pricing">
+                                <span class="price-current">$11.690</span>
+                                <span class="price-old">$12.990</span>
+                            </div>
+                            <button class="game-btn">Consultar Disponibilidad</button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Navegación Cruzada Interna -->
+    <section class="cross-nav-section">
+        <div class="container">
+            <h3 class="cross-nav-title">Explora Otras Categorías Mágicas</h3>
+            <div class="cross-nav-links">
+                <a href="index.html" class="cross-nav-btn">◈ Volver al Inicio</a>
+                <a href="categoria-estrategia.html" class="cross-nav-btn">Estrategia</a>
+                <a href="categoria-familiares.html" class="cross-nav-btn">Familiares</a>
+                <a href="categoria-party.html" class="cross-nav-btn">Party Games</a>
+                <a href="categoria-cooperativos.html" class="cross-nav-btn active">Cooperativos</a>
+                <a href="contacto.html" class="cross-nav-btn">Contacto</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Pie de Página (Footer) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/logo_lagarto.png" alt="Lagarto Arcano Logo Footer" style="width: 32px; height: 32px; border-radius: 50%;">
+                    <div class="logo-text">Lagarto<span>Arcano</span></div>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="https://gatoarcano.cl/" target="_blank" rel="noopener">Inspirado en Gato Arcano</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Lagarto Arcano. Trabajo Académico Universitario. Todos los derechos reservados. Desarrollado con 💚 en HTML5 y CSS3.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lagarto Arcano - Tu Tienda Mágica de Juegos de Mesa</title>
+    <!-- Favicon / Icono de pestaña ficticio -->
+    <link rel="icon" type="image/png" href="assets/logo_lagarto.png">
+    <!-- Meta tags SEO -->
+    <meta name="description"
+        content="Somos Lagarto Arcano, una PYME y tienda online de juegos de mesa modernos y de cartas. Encuentra los mejores títulos de estrategia, familiares, party y cooperativos.">
+    <!-- Enlace a estilos centralizados -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- 1. Cabecera y Menú de Navegación -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo_lagarto.png" alt="Logo Lagarto Arcano"
+                    style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--color-arcane);">
+                <div class="logo-text">Lagarto<span>Arcano</span></div>
+            </a>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item active"><a href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a href="categoria-estrategia.html">Estrategia</a></li>
+                    <li class="nav-item"><a href="categoria-familiares.html">Familiares</a></li>
+                    <li class="nav-item"><a href="categoria-party.html">Party Games</a></li>
+                    <li class="nav-item"><a href="categoria-cooperativos.html">Cooperativos</a></li>
+                    <li class="nav-item"><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 2. Sección Hero (Banner de Bienvenida) -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <h1>Bienvenid@ a <br><span>Lagarto Arcano</span></h1>
+                <p>Procuramos tener la mayor variedad y los mejores juegos de mesa modernos. Como apasionados de este
+                    hobby, nos llena de orgullo ofrecer un amplio catálogo para que puedas elegir lo que más te guste
+                    entre cientos de títulos, ya seas un jugador principiante o un experimentado arcanista de mesa.
+                    ¡Considéranos tus amigos jugones!</p>
+                <div class="hero-buttons">
+                    <a href="#categorias" class="btn btn-primary">Ver Categorías</a>
+                    <a href="contacto.html" class="btn btn-secondary">Asesoría Gratuita</a>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <div class="hero-illustration">
+                    <img src="assets/logo_lagarto.png" alt="Mago Lagarto Ilustración">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Sección de Categorías (Requisito Académico Principal) -->
+    <section id="categorias" class="categories-section">
+        <div class="container">
+            <h2 class="section-title">Nuestras Categorías Mágicas</h2>
+            <div class="categories-grid">
+
+                <!-- Tarjeta 1: Estrategia -->
+                <article class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?q=80&w=600&auto=format&fit=crop"
+                            alt="Categoría Juegos de Estrategia">
+                    </div>
+                    <div class="category-info">
+                        <h3 class="category-title">Estrategia</h3>
+                        <p class="category-desc">Pon a prueba tu mente y tácticas. Toma el control del tablero,
+                            administra recursos y supera a tus rivales.</p>
+                        <a href="categoria-estrategia.html" class="category-link">Ver catálogo <span>➔</span></a>
+                    </div>
+                </article>
+
+                <!-- Tarjeta 2: Familiares -->
+                <article class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1585504198199-20277593b94f?q=80&w=600&auto=format&fit=crop"
+                            alt="Categoría Juegos Familiares">
+                    </div>
+                    <div class="category-info">
+                        <h3 class="category-title">Familiares</h3>
+                        <p class="category-desc">Diversión equilibrada para todas las edades. Reglas sencillas y
+                            dinámicas atrapantes para tardes inolvidables en familia.</p>
+                        <a href="categoria-familiares.html" class="category-link">Ver catálogo <span>➔</span></a>
+                    </div>
+                </article>
+
+                <!-- Tarjeta 3: Party Games -->
+                <article class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?q=80&w=600&auto=format&fit=crop"
+                            alt="Categoría Party Games">
+                    </div>
+                    <div class="category-info">
+                        <h3 class="category-title">Party Games</h3>
+                        <p class="category-desc">¡Risas garantizadas! Juegos rápidos, dinámicos y sencillos ideales para
+                            romper el hielo y jugar con muchos amigos.</p>
+                        <a href="categoria-party.html" class="category-link">Ver catálogo <span>➔</span></a>
+                    </div>
+                </article>
+
+                <!-- Tarjeta 4: Cooperativos -->
+                <article class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=600&auto=format&fit=crop"
+                            alt="Categoría Juegos Cooperativos">
+                    </div>
+                    <div class="category-info">
+                        <h3 class="category-title">Cooperativos</h3>
+                        <p class="category-desc">Aquí todos ganan o todos pierden. Trabaja en equipo, combina
+                            habilidades y logren juntos la victoria contra el tablero.</p>
+                        <a href="categoria-cooperativos.html" class="category-link">Ver catálogo <span>➔</span></a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Sección Quiénes Somos / Redes Sociales (Inspirado en Gato Arcano) -->
+    <section class="about-section">
+        <div class="container about-grid">
+            <div class="about-text">
+                <h2>¿Quiénes son los <span>Arcanistas</span> detrás del Lagarto?</h2>
+                <p>¡Hola! Somos Gina y Matias, una pareja apasionada por el mágico e infinito mundo de los juegos de
+                    mesa. Lagarto Arcano nació como un sueño desde nuestra mesa de juego para llevar a tu hogar risas,
+                    estrategias y momentos compartidos únicos.</p>
+                <p>Sabemos que elegir entre tantas maravillas puede ser difícil. Por eso, nos encanta conversar con
+                    nuestros arcanistas y darles una asesoría 100% personalizada. ¡No dudes en escribirnos!</p>
+            </div>
+            <div class="social-badge-container">
+                <h3 class="social-title">¡Síguenos en nuestras Redes!</h3>
+                <p>Comparte tus experiencias lúdicas, entérate de torneos semanales, preventas exclusivas y nuevos
+                    arribos mágicos antes que nadie.</p>
+                <div class="social-links">
+                    <a href="https://instagram.com" target="_blank" class="social-btn" title="Instagram">📸</a>
+                    <a href="https://facebook.com" target="_blank" class="social-btn" title="Facebook">👥</a>
+                    <a href="https://youtube.com" target="_blank" class="social-btn" title="YouTube">🎥</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Pie de Página (Footer) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/logo_lagarto.png" alt="Lagarto Arcano Logo Footer"
+                        style="width: 32px; height: 32px; border-radius: 50%;">
+                    <div class="logo-text">Lagarto<span>Arcano</span></div>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="https://gatoarcano.cl/" target="_blank" rel="noopener">Inspirado en Gato Arcano</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Lagarto Arcano. Trabajo Académico Universitario. Todos los derechos reservados.
+                    Desarrollado con 💚 en HTML5 y CSS3.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

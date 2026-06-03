@@ -4,33 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto - Lagarto Arcano</title>
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/logo_lagarto.png">
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Hoja de estilos global -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-    <!-- 1. Cabecera y Menú de Navegación -->
-    <header class="header">
-        <div class="container nav-container">
-            <a href="index.html" class="logo">
-                <img src="assets/logo_lagarto.png" alt="Logo Lagarto Arcano" style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--color-arcane);">
-                <div class="logo-text">Lagarto<span>Arcano</span></div>
-            </a>
-            <nav>
-                <ul class="nav-menu">
-                    <li class="nav-item"><a href="index.html">Inicio</a></li>
-                    <li class="nav-item"><a href="categoria-estrategia.html">Estrategia</a></li>
-                    <li class="nav-item"><a href="categoria-familiares.html">Familiares</a></li>
-                    <li class="nav-item"><a href="categoria-party.html">Party Games</a></li>
-                    <li class="nav-item"><a href="categoria-cooperativos.html">Cooperativos</a></li>
-                    <li class="nav-item active"><a href="contacto.html">Contacto</a></li>
-                    <li class="nav-item"><a href="registro.html">Registro</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <!-- Contenedor para Navbar Dinámica -->
+    <div id="navbar-placeholder"></div>
 
-    <!-- 2. Encabezado de Sección -->
+    <!-- Encabezado de Sección -->
     <section class="category-header">
         <div class="container">
             <h1>Contacto Arcanista</h1>
@@ -38,138 +24,112 @@
         </div>
     </section>
 
-    <!-- 3. Formulario y Datos de Contacto (Grid Adaptativo) -->
-    <section class="contact-section">
-        <div class="container contact-grid">
+    <!-- Formulario y Datos de Contacto (Grid Adaptativo Bootstrap 5) -->
+    <main class="container my-5">
+        <div class="row">
             
-            <!-- Columna Izquierda: Formulario -->
-            <div class="contact-card">
-                <form action="#" method="POST" onsubmit="alert('¡Mensaje enviado con éxito! Nos comunicaremos contigo muy pronto.'); return false;">
-                    
-                    <div class="form-group">
-                        <label for="nombre" class="form-label">Nombre Completo *</label>
-                        <input type="text" id="nombre" class="form-control" placeholder="Ej. Juan Pérez" required>
-                    </div>
+            <!-- Columna Izquierda: Formulario (col-12 col-lg-7) -->
+            <div class="col-12 col-lg-7 mb-4">
+                <div class="contact-card p-4 p-md-5">
+                    <form action="#" method="POST" onsubmit="alert('¡Mensaje enviado con éxito! Nos comunicaremos contigo muy pronto.'); return false;">
+                        
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre Completo *</label>
+                            <input type="text" id="nombre" class="form-control" placeholder="Ej. Juan Pérez" required autocomplete="name">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="email" class="form-label">Correo Electrónico *</label>
-                        <input type="email" id="email" class="form-control" placeholder="nombre@correo.com" required>
-                    </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo Electrónico *</label>
+                            <input type="email" id="email" class="form-control" placeholder="nombre@correo.com" required autocomplete="email">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="telefono" class="form-label">Teléfono de Contacto</label>
-                        <input type="tel" id="telefono" class="form-control" placeholder="Ej. +56 9 1234 5678" pattern="(\+?56)?\s?9\s?[0-9]{4}\s?[0-9]{4}">
-                    </div>
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Teléfono de Contacto</label>
+                            <input type="tel" id="telefono" class="form-control" placeholder="Ej. +56 9 1234 5678" pattern="(\+?56)?\s?9\s?[0-9]{4}\s?[0-9]{4}">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="juego" class="form-label">Juego o Categoría de Interés *</label>
-                        <select id="juego" class="form-control" required>
-                            <option value="" disabled selected>Selecciona una opción</option>
-                            <option value="estrategia">Juegos de Estrategia (Catan, Carcassonne, Splendor)</option>
-                            <option value="familiares">Juegos Familiares (Ticket to Ride, Dixit, King of Tokyo)</option>
-                            <option value="party">Party Games (Exploding Kittens, Dobble, Jungle Speed)</option>
-                            <option value="cooperativos">Juegos Cooperativos (Pandemic, Isla Prohibida, The Mind)</option>
-                            <option value="asesoria">Deseo una asesoría personalizada</option>
-                            <option value="otros">Otras consultas/Preventas</option>
-                        </select>
-                    </div>
+                        <div class="mb-3">
+                            <label for="juego" class="form-label">Juego o Categoría de Interés *</label>
+                            <select id="juego" class="form-select" required>
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                <option value="estrategia">Juegos de Estrategia (Catan, Carcassonne, Splendor)</option>
+                                <option value="familiares">Juegos Familiares (Ticket to Ride, Dixit, King of Tokyo)</option>
+                                <option value="party">Party Games (Exploding Kittens, Dobble, Jungle Speed)</option>
+                                <option value="cooperativos">Juegos Cooperativos (Pandemic, Isla Prohibida, The Mind)</option>
+                                <option value="asesoria">Deseo una asesoría personalizada</option>
+                                <option value="otros">Otras consultas/Preventas</option>
+                            </select>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="mensaje" class="form-label">Tu Mensaje Místico *</label>
-                        <textarea id="mensaje" class="form-control" placeholder="Escribe aquí tus preguntas lúdicas..." required></textarea>
-                    </div>
+                        <div class="mb-4">
+                            <label for="mensaje" class="form-label">Tu Mensaje Místico *</label>
+                            <textarea id="mensaje" class="form-control" placeholder="Escribe aquí tus preguntas lúdicas..." required style="min-height: 120px;"></textarea>
+                        </div>
 
-                    <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.05rem;">Enviar Mensaje</button>
-                </form>
+                        <button type="submit" class="btn btn-primary w-100 py-2 fs-5">Enviar Mensaje</button>
+                    </form>
+                </div>
             </div>
 
-            <!-- Columna Derecha: Panel de Datos de la Tienda -->
-            <div class="contact-info-panel">
-                <div>
-                    <h3 class="social-title" style="margin-bottom: 25px;">Nuestra Guarida Lúdica</h3>
-                    
-                    <div class="info-item">
-                        <span class="info-icon">📍</span>
-                        <div class="info-content">
-                            <h4>Dirección Física</h4>
-                            <p>1 Oriente 406, Viña del Mar, Región de Valparaíso, Chile</p>
+            <!-- Columna Derecha: Panel de Datos (col-12 col-lg-5) -->
+            <div class="col-12 col-lg-5 mb-4">
+                <div class="contact-info-panel p-4 p-md-5 h-100 d-flex flex-column justify-content-between">
+                    <div>
+                        <h3 class="social-title mb-4">Nuestra Guarida Lúdica</h3>
+                        
+                        <div class="info-item mb-3">
+                            <span class="info-icon fs-4 me-3">📍</span>
+                            <div class="info-content">
+                                <h4>Dirección Física</h4>
+                                <p class="text-muted">1 Oriente 406, Viña del Mar, Región de Valparaíso, Chile</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item mb-3">
+                            <span class="info-icon fs-4 me-3">📞</span>
+                            <div class="info-content">
+                                <h4>Teléfono / WhatsApp</h4>
+                                <p class="text-muted">+56 9 3946 0507</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item mb-3">
+                            <span class="info-icon fs-4 me-3">✉️</span>
+                            <div class="info-content">
+                                <h4>Correo de Soporte</h4>
+                                <p class="text-muted">contacto@lagartoarcano.cl</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item mb-4">
+                            <span class="info-icon fs-4 me-3">⏱️</span>
+                            <div class="info-content">
+                                <h4>Horario de Atención</h4>
+                                <p class="text-muted">Lunes a Sábado: 11:00 hrs a 20:00 hrs<br>Domingos: Cerrado (¡Jugando con la familia!)</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="info-item">
-                        <span class="info-icon">📞</span>
-                        <div class="info-content">
-                            <h4>Teléfono / WhatsApp</h4>
-                            <p>+56 9 3946 0507</p>
+                    <!-- Simulación de Mapa Místico con CSS puro -->
+                    <div class="map-container rounded-3 p-4 text-center mt-3">
+                        <div class="map-placeholder">
+                            <span class="fs-1 d-block mb-2" style="text-shadow: 0 0 10px var(--color-arcane-glow);">🗺️</span>
+                            <h4 style="font-family: var(--font-heading);">Viña del Mar, Chile</h4>
+                            <p class="text-muted mb-0" style="font-size: 0.8rem;">1 Oriente 406. Cerca de Plaza de Viña.</p>
                         </div>
-                    </div>
-
-                    <div class="info-item">
-                        <span class="info-icon">✉️</span>
-                        <div class="info-content">
-                            <h4>Correo de Soporte</h4>
-                            <p>contacto@lagartoarcano.cl</p>
-                        </div>
-                    </div>
-
-                    <div class="info-item">
-                        <span class="info-icon">⏱️</span>
-                        <div class="info-content">
-                            <h4>Horario de Atención</h4>
-                            <p>Lunes a Sábado: 11:00 hrs a 20:00 hrs<br>Domingos: Cerrado (¡Jugando con la familia!)</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Simulación de Mapa Místico con CSS puro -->
-                <div class="map-container">
-                    <div class="map-placeholder">
-                        <span style="text-shadow: 0 0 10px var(--color-arcane-glow);">🗺️</span>
-                        <h4 style="font-family: var(--font-heading); margin-bottom: 5px;">Viña del Mar, Chile</h4>
-                        <p style="font-size: 0.8rem; color: var(--text-muted);">1 Oriente 406. Cerca de Plaza de Viña.</p>
                     </div>
                 </div>
             </div>
 
         </div>
-    </section>
+    </main>
 
-    <!-- 4. Navegación Cruzada Interna -->
-    <section class="cross-nav-section">
-        <div class="container">
-            <h3 class="cross-nav-title">Navegar de Vuelta al Catálogo</h3>
-            <div class="cross-nav-links">
-                <a href="index.html" class="cross-nav-btn">◈ Volver al Inicio</a>
-                <a href="categoria-estrategia.html" class="cross-nav-btn">Estrategia</a>
-                <a href="categoria-familiares.html" class="cross-nav-btn">Familiares</a>
-                <a href="categoria-party.html" class="cross-nav-btn">Party Games</a>
-                <a href="categoria-cooperativos.html" class="cross-nav-btn">Cooperativos</a>
-                <a href="contacto.html" class="cross-nav-btn active">Contacto</a>
-                <a href="registro.html" class="cross-nav-btn">Registro</a>
-            </div>
-        </div>
-    </section>
+    <!-- Contenedor para Footer Dinámico -->
+    <div id="footer-placeholder"></div>
 
-    <!-- 5. Pie de Página (Footer) -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="assets/logo_lagarto.png" alt="Lagarto Arcano Logo Footer" style="width: 32px; height: 32px; border-radius: 50%;">
-                    <div class="logo-text">Lagarto<span>Arcano</span></div>
-                </div>
-                <ul class="footer-links">
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
-                    <li><a href="registro.html">Registro</a></li>
-                    <li><a href="https://gatoarcano.cl/" target="_blank" rel="noopener">Inspirado en Gato Arcano</a></li>
-                </ul>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Lagarto Arcano. Trabajo Académico Universitario. Todos los derechos reservados. Desarrollado con 💚 en HTML5 y CSS3.</p>
-            </div>
-        </div>
-    </footer>
-
+    <!-- Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Lógica global -->
+    <script src="js/main.js"></script>
 </body>
 </html>

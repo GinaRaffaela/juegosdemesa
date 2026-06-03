@@ -1242,3 +1242,39 @@ textarea.form-control {
     color: var(--text-primary);
 }
 
+/* 14. Clases Utilitarias para Colores de Lagarto Arcano */
+.bg-emerald {
+    background-color: var(--color-lizard) !important;
+    color: var(--bg-cosmic) !important;
+    font-weight: 700;
+}
+
+.text-emerald {
+    color: var(--color-lizard-light) !important;
+}
+
+/* Overrides de Estilos de Bootstrap 5 */
+.dropdown-menu {
+    background-color: var(--bg-nav) !important;
+    border: 1px solid var(--border-glass) !important;
+    backdrop-filter: blur(12px);
+}
+
+.dropdown-item {
+    color: var(--text-primary) !important;
+    font-family: var(--font-body);
+    transition: var(--transition-smooth);
+}
+
+.dropdown-item:hover {
+    background-color: var(--color-lizard-glow) !important;
+    color: var(--color-lizard-light) !important;
+}
+
+.navbar-toggler {
+    border: 1px solid var(--border-glass) !important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 10px var(--color-lizard-glow) !important;
+}

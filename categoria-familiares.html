@@ -1,166 +1,58 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juegos Familiares - Lagarto Arcano</title>
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/logo_lagarto.png">
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Hoja de estilos global -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
 
-    <!-- 1. Cabecera y Menú de Navegación -->
-    <header class="header">
-        <div class="container nav-container">
-            <a href="index.html" class="logo">
-                <img src="assets/logo_lagarto.png" alt="Logo Lagarto Arcano"
-                    style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--color-arcane);">
-                <div class="logo-text">Lagarto<span>Arcano</span></div>
-            </a>
-            <nav>
-                <ul class="nav-menu">
-                    <li class="nav-item"><a href="index.html">Inicio</a></li>
-                    <li class="nav-item"><a href="categoria-estrategia.html">Estrategia</a></li>
-                    <li class="nav-item active"><a href="categoria-familiares.html">Familiares</a></li>
-                    <li class="nav-item"><a href="categoria-party.html">Party Games</a></li>
-                    <li class="nav-item"><a href="categoria-cooperativos.html">Cooperativos</a></li>
-                    <li class="nav-item"><a href="contacto.html">Contacto</a></li>
-                    <li class="nav-item"><a href="registro.html">Registro</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <!-- Contenedor para Navbar Dinámica -->
+    <div id="navbar-placeholder"></div>
 
-    <!-- 2. Encabezado de la Categoría -->
+    <!-- Encabezado de la Categoría -->
     <section class="category-header">
         <div class="container">
             <h1>Juegos Familiares</h1>
-            <p>Diversión equilibrada para todas las edades. Con reglas accesibles pero profundidad táctica, son ideales
-                para reunir a la familia y amigos en tardes de pura diversión.</p>
+            <p>Diversión equilibrada para todas las edades. Con reglas accesibles pero profundidad táctica, son ideales para reunir a la familia y amigos en tardes de pura diversión.</p>
         </div>
     </section>
 
-    <!-- 3. Grid de Fichas de Juegos (Límite: Máx 3 Juegos) -->
-    <section class="catalog-section">
-        <div class="container">
-            <div class="catalog-grid">
-
-                <!-- Ficha 1: Ticket to Ride (Posee Descuento) -->
-                <article class="game-card">
-                    <div class="discount-badge">20% OFF</div>
-                    <div class="game-image-wrapper">
-                        <img src="https://http2.mlstatic.com/D_NQ_NP_773654-CBT108456994297_032026-O.webp"
-                            alt="Juego de Mesa Ticket to Ride">
-                    </div>
-                    <div class="game-content">
-                        <div>
-                            <h3 class="game-title">Ticket to Ride</h3>
-                            <p class="game-desc">¡Una aventura ferroviaria inolvidable! Reúne cartas de vagones de
-                                colores para conectar ciudades de Norteamérica y completar tus rutas secretas antes de
-                                que te bloqueen.</p>
-                        </div>
-                        <div>
-                            <div class="game-pricing">
-                                <span class="price-current">$31.990</span>
-                                <span class="price-old">$39.990</span>
-                            </div>
-                            <button class="game-btn">Consultar Disponibilidad</button>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Ficha 2: Dixit (Precio Regular) -->
-                <article class="game-card">
-                    <div class="regular-price-badge">Precio Regular</div>
-                    <div class="game-image-wrapper">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuPeDQxO80Yxl99oewX4kKQFNVwKXbOGyafg&s"
-                            alt="Juego de Mesa Dixit">
-                    </div>
-                    <div class="game-content">
-                        <div>
-                            <h3 class="game-title">Dixit</h3>
-                            <p class="game-desc">Despierta tu creatividad y fantasía. Narra pistas místicas inspiradas
-                                en hermosas e inusuales cartas ilustradas, tratando de que solo algunos descubran tu
-                                carta secreta.</p>
-                        </div>
-                        <div>
-                            <div class="game-pricing">
-                                <span class="price-current">$24.990</span>
-                            </div>
-                            <button class="game-btn">Consultar Disponibilidad</button>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Ficha 3: King of Tokyo (Posee Descuento) -->
-                <article class="game-card">
-                    <div class="discount-badge">15% OFF</div>
-                    <div class="game-image-wrapper">
-                        <img src="https://m.media-amazon.com/images/I/81fVDF-Gb8L.jpg"
-                            alt="Juego de Mesa King of Tokyo">
-                    </div>
-                    <div class="game-content">
-                        <div>
-                            <h3 class="game-title">King of Tokyo</h3>
-                            <p class="game-desc">¿Listo para destrozar la ciudad? Juega como un monstruo mutante gigante
-                                o un robot colosal. Lanza los dados para curarte, ganar energía o atacar ferozmente a
-                                tus contrincantes.</p>
-                        </div>
-                        <div>
-                            <div class="game-pricing">
-                                <span class="price-current">$30.590</span>
-                                <span class="price-old">$35.990</span>
-                            </div>
-                            <button class="game-btn">Consultar Disponibilidad</button>
-                        </div>
-                    </div>
-                </article>
-
-            </div>
+    <!-- Catálogo de Juegos Dinámico (Bootstrap 12-column grid) -->
+    <section class="container my-5">
+        <div class="row justify-content-center" id="catalog-products-container" data-category="familiares">
+            <!-- Se inyectará dinámicamente con js/catalogo.js -->
         </div>
     </section>
 
-    <!-- 4. Navegación Cruzada Interna -->
-    <section class="cross-nav-section">
-        <div class="container">
-            <h3 class="cross-nav-title">Explora Otras Categorías Mágicas</h3>
-            <div class="cross-nav-links">
+    <!-- Navegación Cruzada Interna (Bootstrap 5) -->
+    <section class="cross-nav-section py-4">
+        <div class="container text-center">
+            <h3 class="cross-nav-title mb-4">Explora Otras Categorías Mágicas</h3>
+            <div class="d-flex justify-content-center gap-2 flex-wrap">
                 <a href="index.html" class="cross-nav-btn">◈ Volver al Inicio</a>
                 <a href="categoria-estrategia.html" class="cross-nav-btn">Estrategia</a>
                 <a href="categoria-familiares.html" class="cross-nav-btn active">Familiares</a>
                 <a href="categoria-party.html" class="cross-nav-btn">Party Games</a>
                 <a href="categoria-cooperativos.html" class="cross-nav-btn">Cooperativos</a>
                 <a href="contacto.html" class="cross-nav-btn">Contacto</a>
-                <a href="registro.html" class="cross-nav-btn">Registro</a>
             </div>
         </div>
     </section>
 
-    <!-- 5. Pie de Página (Footer) -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="assets/logo_lagarto.png" alt="Lagarto Arcano Logo Footer"
-                        style="width: 32px; height: 32px; border-radius: 50%;">
-                    <div class="logo-text">Lagarto<span>Arcano</span></div>
-                </div>
-                <ul class="footer-links">
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
-                    <li><a href="registro.html">Registro</a></li>
-                    <li><a href="https://gatoarcano.cl/" target="_blank" rel="noopener">Inspirado en Gato Arcano</a></li>
-                </ul>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Lagarto Arcano. Trabajo Académico Universitario. Todos los derechos reservados.
-                    Desarrollado con 💚 en HTML5 y CSS3.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Contenedor para Footer Dinámico -->
+    <div id="footer-placeholder"></div>
 
+    <!-- Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Lógica global y de catálogo -->
+    <script src="js/main.js"></script>
+    <script src="js/catalogo.js"></script>
 </body>
-
 </html>

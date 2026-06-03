@@ -1,7 +1,7 @@
 /**
  * =========================================================================
- *   LAGARTO ARCANO - LÓGICA DE REGISTRO & INTERACTIVIDAD DOM (JAVASCRIPT)
- *   Trabajo Académico Universitario - Validación y DOM Dinámico
+ *   LAGARTO ARCANO - REGISTRO JS
+ *   Lógica de validación avanzada y registro en localStorage
  * =========================================================================
  */
 
@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nombre = document.getElementById('nombre');
     const usuario = document.getElementById('usuario');
     const email = document.getElementById('email');
+    const rol = document.getElementById('rol');
     const password = document.getElementById('password');
     const confirmPassword = document.getElementById('confirm-password');
     const fechaNacimiento = document.getElementById('fecha-nacimiento');
@@ -18,46 +19,38 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Botones
     const btnSubmit = document.getElementById('btn-submit');
-    const btnReset = document.getElementById('btn-reset');
-    
-    // Elementos de Renderizado Dinámico
-    const buyersGrid = document.getElementById('buyers-grid');
-    const noBuyersMsg = document.getElementById('no-buyers-msg');
 
-    // 2. Estado de validación por cada campo
+    // 2. Estado de validación por cada campo requerido
     const validationState = {
         nombre: false,
         usuario: false,
         email: false,
+        rol: false,
         password: false,
         confirmPassword: false,
         fechaNacimiento: false
     };
 
-    // 3. Helper de Inyección del DOM: Mostrar Éxito
+    // 3. Helpers de inyección del DOM para Clases CSS y Spans de error
     const setSuccess = (inputElement, errorSpanId) => {
         inputElement.classList.remove('is-invalid');
         inputElement.classList.add('is-valid');
         const errorSpan = document.getElementById(errorSpanId);
         errorSpan.textContent = '';
-        errorSpan.style.opacity = '0';
     };
 
-    // Helper de Inyección del DOM: Mostrar Error
     const setError = (inputElement, errorSpanId, message) => {
         inputElement.classList.remove('is-valid');
         inputElement.classList.add('is-invalid');
         const errorSpan = document.getElementById(errorSpanId);
         errorSpan.textContent = message;
-        errorSpan.style.opacity = '1';
     };
 
-    // 4. Funciones de Validación de Campos Individuales
-
+    // 4. Funciones de Validación de Campos
     const validateNombre = () => {
         const value = nombre.value.trim();
         if (value === '') {
-            setError(nombre, 'error-nombre', 'El nombre completo es requerido y no puede estar vacío.');
+            setError(nombre, 'error-nombre', 'El nombre completo es requerido.');
             validationState.nombre = false;
         } else {
             setSuccess(nombre, 'error-nombre');
@@ -69,7 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const validateUsuario = () => {
         const value = usuario.value.trim();
         if (value === '') {
-            setError(usuario, 'error-usuario', 'El nombre de usuario es requerido y no puede estar vacío.');
+            setError(usuario, 'error-usuario', 'El nombre de usuario es requerido.');
+            validationState.usuario = false;
+        } else if (value.length < 3) {
+            setError(usuario, 'error-usuario', 'El usuario debe tener al menos 3 caracteres.');
             validationState.usuario = false;
         } else {
             setSuccess(usuario, 'error-usuario');
@@ -86,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setError(email, 'error-email', 'El correo electrónico es requerido.');
             validationState.email = false;
         } else if (!emailRegex.test(value)) {
-            setError(email, 'error-email', 'El formato del correo electrónico no es válido (Ej. nombre@correo.com).');
+            setError(email, 'error-email', 'Formato de correo no es válido (Ej: nombre@correo.com).');
             validationState.email = false;
         } else {
             setSuccess(email, 'error-email');
@@ -95,26 +91,48 @@ document.addEventListener('DOMContentLoaded', () => {
         checkFormValidity();
     };
 
+    const validateRol = () => {
+        const value = rol.value;
+        if (!value) {
+            setError(rol, 'error-rol', 'Debes seleccionar un rol para el usuario.');
+            validationState.rol = false;
+        } else {
+            setSuccess(rol, 'error-rol');
+            validationState.rol = true;
+        }
+        checkFormValidity();
+    };
+
     const validatePassword = () => {
         const value = password.value;
-        const hasNumber = /\d/.test(value);
-        const hasUppercase = /[A-Z]/.test(value);
+        
+        // 5 validaciones de seguridad solicitadas:
+        const minLength = value.length >= 8;                     // 1. Longitud mínima de 8
+        const maxLength = value.length <= 20;                    // 2. Longitud máxima de 20
+        const hasUppercase = /[A-Z]/.test(value);                // 3. Al menos una mayúscula
+        const hasNumber = /\d/.test(value);                      // 4. Al menos un número
+        const hasSpecialChar = /[@$!%*?&]/.test(value);          // 5. Al menos un carácter especial
         
         if (value === '') {
             setError(password, 'error-password', 'La contraseña es requerida.');
             validationState.password = false;
-        } else if (value.length < 6 || value.length > 18) {
-            setError(password, 'error-password', `La contraseña debe tener entre 6 y 18 caracteres. (Actual: ${value.length})`);
+        } else if (!minLength || !maxLength) {
+            setError(password, 'error-password', `La contraseña debe tener entre 8 y 20 caracteres. (Largo actual: ${value.length})`);
             validationState.password = false;
-        } else if (!hasNumber || !hasUppercase) {
-            setError(password, 'error-password', 'La contraseña debe contener al menos un número (0-9) y al menos una letra mayúscula.');
+        } else if (!hasUppercase) {
+            setError(password, 'error-password', 'Debe contener al menos una letra mayúscula.');
+            validationState.password = false;
+        } else if (!hasNumber) {
+            setError(password, 'error-password', 'Debe contener al menos un número.');
+            validationState.password = false;
+        } else if (!hasSpecialChar) {
+            setError(password, 'error-password', 'Debe contener al menos un carácter especial (@$!%*?&).');
             validationState.password = false;
         } else {
             setSuccess(password, 'error-password');
             validationState.password = true;
         }
         
-        // Revalidar confirmación si ya tiene contenido
         if (confirmPassword.value !== '') {
             validateConfirmPassword();
         }
@@ -129,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setError(confirmPassword, 'error-confirm-password', 'Por favor confirma tu contraseña.');
             validationState.confirmPassword = false;
         } else if (pValue !== cpValue) {
-            setError(confirmPassword, 'error-confirm-password', 'Las contraseñas ingresadas no coinciden.');
+            setError(confirmPassword, 'error-confirm-password', 'Las contraseñas no coinciden.');
             validationState.confirmPassword = false;
         } else {
             setSuccess(confirmPassword, 'error-confirm-password');
@@ -156,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             if (age < 13) {
-                setError(fechaNacimiento, 'error-fecha-nacimiento', `Debes tener al menos 13 años para registrarte. (Tu edad calculada: ${age} años)`);
+                setError(fechaNacimiento, 'error-fecha-nacimiento', `La persona no puede tener menos de 13 años para registrarse. (Edad actual: ${age} años).`);
                 validationState.fechaNacimiento = false;
             } else {
                 setSuccess(fechaNacimiento, 'error-fecha-nacimiento');
@@ -166,23 +184,17 @@ document.addEventListener('DOMContentLoaded', () => {
         checkFormValidity();
     };
 
-    // 5. Verificar Validez Completa para Manipular HTML Propiedades (Disabled)
+    // Habilitar o deshabilitar botón de enviar dinámicamente
     const checkFormValidity = () => {
         const allValid = Object.values(validationState).every(state => state === true);
-        
-        // Manipulación dinámica de propiedades HTML (disabled) y estilos CSS
         if (allValid) {
             btnSubmit.removeAttribute('disabled');
-            btnSubmit.style.cursor = 'pointer';
-            btnSubmit.style.opacity = '1';
         } else {
             btnSubmit.setAttribute('disabled', 'true');
-            btnSubmit.style.cursor = 'not-allowed';
-            btnSubmit.style.opacity = '0.6';
         }
     };
 
-    // 6. Asignar Escuchadores de Eventos en Tiempo Real (Requisito de Interactividad)
+    // 5. Escuchadores de eventos para validación en tiempo real
     nombre.addEventListener('input', validateNombre);
     nombre.addEventListener('blur', validateNombre);
 
@@ -191,6 +203,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     email.addEventListener('input', validateEmail);
     email.addEventListener('blur', validateEmail);
+
+    rol.addEventListener('change', validateRol);
+    rol.addEventListener('blur', validateRol);
 
     password.addEventListener('input', validatePassword);
     password.addEventListener('blur', validatePassword);
@@ -201,151 +216,81 @@ document.addEventListener('DOMContentLoaded', () => {
     fechaNacimiento.addEventListener('change', validateFechaNacimiento);
     fechaNacimiento.addEventListener('blur', validateFechaNacimiento);
 
-    // 7. Renderizado Dinámico de Compradores (DOM & LocalStorage)
-    const renderBuyers = () => {
-        const buyers = JSON.parse(localStorage.getItem('buyers') || '[]');
-        
-        // Limpiar contenedor
-        buyersGrid.innerHTML = '';
-        
-        if (buyers.length === 0) {
-            noBuyersMsg.style.display = 'block';
-        } else {
-            noBuyersMsg.style.display = 'none';
-            
-            buyers.forEach((buyer) => {
-                // Crear tarjeta del comprador con manipulación dinámica del DOM
-                const card = document.createElement('article');
-                card.className = 'buyer-card';
-                
-                // Formatear tags de juegos comprados
-                let gamesHTML = '';
-                if (buyer.juegos && buyer.juegos.length > 0) {
-                    gamesHTML = `<div class="buyer-games-tags">` + 
-                        buyer.juegos.map(game => `<span class="game-tag">🎮 ${game}</span>`).join('') + 
-                        `</div>`;
-                } else {
-                    gamesHTML = `<p class="no-games-tag">Ningún juego registrado aún</p>`;
-                }
-                
-                card.innerHTML = `
-                    <div class="buyer-header">
-                        <span class="buyer-name">${buyer.nombre}</span>
-                        <span class="buyer-username">@${buyer.usuario}</span>
-                    </div>
-                    <p class="buyer-detail">📧 Email: <strong>${buyer.email}</strong></p>
-                    <p class="buyer-detail">🎂 Nacimiento: <strong>${buyer.fechaNacimiento}</strong></p>
-                    <p class="buyer-detail">📍 Despacho: <strong>${buyer.direccion}</strong></p>
-                    <div class="buyer-games">
-                        <h4 class="buyer-games-title">Juegos Comprados:</h4>
-                        ${gamesHTML}
-                    </div>
-                `;
-                
-                buyersGrid.appendChild(card);
-            });
-        }
-    };
-
-    // 8. Envío de Formulario (Submit)
+    // 6. Envío del formulario
     form.addEventListener('submit', (e) => {
-        e.preventDefault(); // Evitar recarga
+        e.preventDefault();
         
         // Revalidar todo por seguridad
         validateNombre();
         validateUsuario();
         validateEmail();
+        validateRol();
         validatePassword();
         validateConfirmPassword();
         validateFechaNacimiento();
-        
+
         const allValid = Object.values(validationState).every(state => state === true);
         
         if (allValid) {
-            // Capturar juegos seleccionados
-            const checkedBoxes = document.querySelectorAll('input[name="juegos-favoritos"]:checked');
-            const selectedGames = Array.from(checkedBoxes).map(cb => cb.value);
+            const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
             
-            // Crear objeto del nuevo comprador
-            const newBuyer = {
+            // Verificar si el usuario ya existe
+            const usernameExists = registeredUsers.some(user => user.usuario === usuario.value.trim());
+            const emailExists = registeredUsers.some(user => user.email === email.value.trim());
+
+            if (usernameExists) {
+                setError(usuario, 'error-usuario', 'El nombre de usuario ya está registrado por otro arcanista.');
+                return;
+            }
+            if (emailExists) {
+                setError(email, 'error-email', 'El correo electrónico ya está registrado por otro arcanista.');
+                return;
+            }
+
+            // Crear y guardar el nuevo usuario
+            const newUser = {
                 nombre: nombre.value.trim(),
                 usuario: usuario.value.trim(),
                 email: email.value.trim(),
+                rol: rol.value,
+                password: password.value,
                 fechaNacimiento: fechaNacimiento.value,
-                direccion: direccion.value.trim() || 'No especificada',
-                juegos: selectedGames
+                direccion: direccion.value.trim() || 'No especificada'
             };
-            
-            // Guardar en LocalStorage
-            const buyers = JSON.parse(localStorage.getItem('buyers') || '[]');
-            buyers.push(newBuyer);
-            localStorage.setItem('buyers', JSON.stringify(buyers));
-            
-            // Inyectar modal dinámico de éxito en el DOM
-            showSuccessModal(newBuyer.usuario);
-            
-            // Actualizar lista en pantalla inmediatamente
-            renderBuyers();
-            
-            // Limpiar formulario y restablecer estados
+
+            registeredUsers.push(newUser);
+            localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+
+            alert(`¡Registro Exitoso! Bienvenido/a a Lagarto Arcano, ${newUser.nombre}. Serás redirigido/a al inicio de sesión.`);
             form.reset();
             resetFormClasses();
+            
+            // Redirigir a login
+            window.location.href = 'login.html';
         }
     });
 
-    // 9. Modal Místico de Éxito creado dinámicamente
-    const showSuccessModal = (username) => {
-        const modal = document.createElement('div');
-        modal.className = 'success-modal';
-        modal.innerHTML = `
-            <div class="success-modal-header">◈ ¡Registro Completado! 🧙‍♂️</div>
-            <div class="success-modal-body">
-                El arcanista <strong>@${username}</strong> ha ingresado con éxito al registro de compradores de <strong>Lagarto Arcano</strong>. ¡Tus recompensas lúdicas te esperan!
-            </div>
-        `;
-        document.body.appendChild(modal);
-        
-        // Auto-eliminar el modal del DOM después de 4.5 segundos
-        setTimeout(() => {
-            modal.style.opacity = '0';
-            modal.style.transition = 'opacity 0.4s ease';
-            setTimeout(() => {
-                modal.remove();
-            }, 400);
-        }, 4500);
-    };
-
-    // 10. Botón de Limpieza (Reset)
+    // 7. Botón de Limpieza (Reset)
     form.addEventListener('reset', () => {
-        // Permitir que el reset por defecto ocurra, luego limpiar clases de validación
         setTimeout(() => {
             resetFormClasses();
         }, 50);
     });
 
     const resetFormClasses = () => {
-        // Remover clases de éxito y error
-        const inputs = [nombre, usuario, email, password, confirmPassword, fechaNacimiento, direccion];
+        const inputs = [nombre, usuario, email, rol, password, confirmPassword, fechaNacimiento, direccion];
         inputs.forEach(input => {
             input.classList.remove('is-valid', 'is-invalid');
         });
         
-        // Limpiar spans de feedback en el DOM
-        const spans = document.querySelectorAll('.error-feedback');
-        spans.forEach(span => {
+        const errorSpans = document.querySelectorAll('.error-feedback');
+        errorSpans.forEach(span => {
             span.textContent = '';
-            span.style.opacity = '0';
         });
         
-        // Restablecer estados de validación
         for (let key in validationState) {
             validationState[key] = false;
         }
-        
-        // Deshabilitar botón de submit de nuevo
         checkFormValidity();
     };
-
-    // 11. Renderizado Inicial al cargar la pantalla
-    renderBuyers();
 });

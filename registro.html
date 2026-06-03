@@ -4,38 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Arcanistas - Lagarto Arcano</title>
-    <!-- Favicon / Icono de pestaña ficticio -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/logo_lagarto.png">
-    <!-- Meta tags SEO -->
-    <meta name="description" content="Regístrate como arcanista en la tienda Lagarto Arcano. Crea tu perfil para acceder a grandes recompensas de juegos de mesa.">
-    <!-- Enlace a estilos centralizados -->
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Hoja de estilos global -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-    <!-- 1. Cabecera y Menú de Navegación -->
-    <header class="header">
-        <div class="container nav-container">
-            <a href="index.html" class="logo">
-                <img src="assets/logo_lagarto.png" alt="Logo Lagarto Arcano" style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--color-arcane);">
-                <div class="logo-text">Lagarto<span>Arcano</span></div>
-            </a>
-            
-            <nav>
-                <ul class="nav-menu">
-                    <li class="nav-item"><a href="index.html">Inicio</a></li>
-                    <li class="nav-item"><a href="categoria-estrategia.html">Estrategia</a></li>
-                    <li class="nav-item"><a href="categoria-familiares.html">Familiares</a></li>
-                    <li class="nav-item"><a href="categoria-party.html">Party Games</a></li>
-                    <li class="nav-item"><a href="categoria-cooperativos.html">Cooperativos</a></li>
-                    <li class="nav-item"><a href="contacto.html">Contacto</a></li>
-                    <li class="nav-item active"><a href="registro.html">Registro</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <!-- Contenedor para Navbar Dinámica -->
+    <div id="navbar-placeholder"></div>
 
-    <!-- 2. Encabezado de Sección -->
+    <!-- Encabezado de Sección -->
     <section class="category-header">
         <div class="container">
             <h1>Registro de Arcanistas</h1>
@@ -43,158 +24,98 @@
         </div>
     </section>
 
-    <!-- 3. Formulario de Registro (Estilo Responsivo 3 Pantallas) -->
-    <section class="contact-section" style="padding-top: 20px;">
-        <div class="container" style="max-width: 800px;">
-            <div class="contact-card">
-                <form id="form-registro" novalidate>
-                    
-                    <!-- Campo: Nombre Completo -->
-                    <div class="form-group">
-                        <label for="nombre" class="form-label">Nombre Completo *</label>
-                        <input type="text" id="nombre" class="form-control" placeholder="Ej. Matías Ignacio Pérez" required>
-                        <span class="error-feedback" id="error-nombre"></span>
-                    </div>
+    <!-- Formulario de Registro (Bootstrap 5 Grid adaptativo) -->
+    <section class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="contact-card p-4 p-md-5">
+                    <form id="form-registro" novalidate>
+                        <div class="row">
+                            
+                            <!-- Campo: Nombre Completo -->
+                            <div class="col-12 col-md-6 mb-3">
+                                <label for="nombre" class="form-label">Nombre Completo *</label>
+                                <input type="text" id="nombre" class="form-control" placeholder="Ej. Matías Ignacio Pérez" required autocomplete="name">
+                                <div class="error-feedback" id="error-nombre"></div>
+                            </div>
 
-                    <!-- Campo: Nombre de Usuario -->
-                    <div class="form-group">
-                        <label for="usuario" class="form-label">Nombre de Usuario *</label>
-                        <input type="text" id="usuario" class="form-control" placeholder="Ej. matilizard" required>
-                        <span class="error-feedback" id="error-usuario"></span>
-                    </div>
+                            <!-- Campo: Nombre de Usuario -->
+                            <div class="col-12 col-md-6 mb-3">
+                                <label for="usuario" class="form-label">Nombre de Usuario *</label>
+                                <input type="text" id="usuario" class="form-control" placeholder="Ej. matilizard" required autocomplete="username">
+                                <div class="error-feedback" id="error-usuario"></div>
+                            </div>
 
-                    <!-- Campo: Correo Electrónico -->
-                    <div class="form-group">
-                        <label for="email" class="form-label">Correo Electrónico *</label>
-                        <input type="email" id="email" class="form-control" placeholder="arcanista@correo.com" required>
-                        <span class="error-feedback" id="error-email"></span>
-                    </div>
+                            <!-- Campo: Correo Electrónico -->
+                            <div class="col-12 col-md-6 mb-3">
+                                <label for="email" class="form-label">Correo Electrónico *</label>
+                                <input type="email" id="email" class="form-control" placeholder="arcanista@correo.com" required autocomplete="email">
+                                <div class="error-feedback" id="error-email"></div>
+                            </div>
 
-                    <!-- Fila de Contraseñas (Dos columnas adaptables) -->
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-                        <!-- Contraseña -->
-                        <div class="form-group">
-                            <label for="password" class="form-label">Contraseña *</label>
-                            <input type="password" id="password" class="form-control" placeholder="Mín. 6-18 caracteres, 1 Mayús y 1 Num" required>
-                            <span class="error-feedback" id="error-password"></span>
+                            <!-- Campo: Rol de Usuario (Requisito de Roles) -->
+                            <div class="col-12 col-md-6 mb-3">
+                                <label for="rol" class="form-label">Tipo de Usuario / Rol *</label>
+                                <select id="rol" class="form-select" required>
+                                    <option value="" disabled selected>Selecciona tu rol</option>
+                                    <option value="cliente">Cliente (Comprador de Juegos)</option>
+                                    <option value="administrador">Administrador (Gestión de Tienda)</option>
+                                </select>
+                                <div class="error-feedback" id="error-rol"></div>
+                            </div>
+
+                            <!-- Campo: Contraseña -->
+                            <div class="col-12 col-md-6 mb-3">
+                                <label for="password" class="form-label">Contraseña *</label>
+                                <input type="password" id="password" class="form-control" placeholder="Mín 8-20 carac, 1 Mayús, 1 Num, 1 Esp (@$!%*?&)" required autocomplete="new-password">
+                                <div class="error-feedback" id="error-password"></div>
+                            </div>
+                            
+                            <!-- Campo: Repetir Contraseña -->
+                            <div class="col-12 col-md-6 mb-3">
+                                <label for="confirm-password" class="form-label">Repetir Contraseña *</label>
+                                <input type="password" id="confirm-password" class="form-control" placeholder="Repite exactamente tu clave" required autocomplete="new-password">
+                                <div class="error-feedback" id="error-confirm-password"></div>
+                            </div>
+
+                            <!-- Campo: Fecha de Nacimiento -->
+                            <div class="col-12 col-md-6 mb-3">
+                                <label for="fecha-nacimiento" class="form-label">Fecha de Nacimiento * (Mín. 13 años)</label>
+                                <input type="date" id="fecha-nacimiento" class="form-control" required>
+                                <div class="error-feedback" id="error-fecha-nacimiento"></div>
+                            </div>
+                            
+                            <!-- Campo: Dirección de despacho -->
+                            <div class="col-12 col-md-6 mb-4">
+                                <label for="direccion" class="form-label">Dirección de Despacho (Opcional)</label>
+                                <input type="text" id="direccion" class="form-control" placeholder="Ej. Calle 1 Oriente 406, Viña del Mar" autocomplete="street-address">
+                                <div class="error-feedback" id="error-direccion"></div>
+                            </div>
+
                         </div>
-                        
-                        <!-- Repetir Contraseña -->
-                        <div class="form-group">
-                            <label for="confirm-password" class="form-label">Repetir Contraseña *</label>
-                            <input type="password" id="confirm-password" class="form-control" placeholder="Repite exactamente tu clave" required>
-                            <span class="error-feedback" id="error-confirm-password"></span>
+
+                        <!-- Botones de Acción -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-md-6 mb-2">
+                                <button type="submit" id="btn-submit" class="btn btn-primary w-100 py-2 fs-5" disabled>Completar Registro</button>
+                            </div>
+                            <div class="col-12 col-md-6 mb-2">
+                                <button type="reset" id="btn-reset" class="btn btn-secondary w-100 py-2 fs-5">Limpiar Formulario</button>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- Fila de Fecha y Dirección -->
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-                        <!-- Fecha de Nacimiento -->
-                        <div class="form-group">
-                            <label for="fecha-nacimiento" class="form-label">Fecha de Nacimiento * (Mín. 13 años)</label>
-                            <input type="date" id="fecha-nacimiento" class="form-control" required>
-                            <span class="error-feedback" id="error-fecha-nacimiento"></span>
-                        </div>
-                        
-                        <!-- Dirección de despacho -->
-                        <div class="form-group">
-                            <label for="direccion" class="form-label">Dirección de Despacho (Opcional)</label>
-                            <input type="text" id="direccion" class="form-control" placeholder="Ej. Calle 1 Oriente 406, Viña del Mar">
-                            <span class="error-feedback" id="error-direccion"></span>
-                        </div>
-                    </div>
-
-                    <!-- Sección: Registro de Juegos que Compra (Requisito Temático) -->
-                    <div class="form-group" style="margin-top: 15px;">
-                        <label class="form-label" style="color: var(--color-arcane);">¿Qué juegos de nuestro catálogo has comprado o deseas comprar?</label>
-                        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 5px;">Esto nos ayudará a registrar tus preferencias y asignarte recompensas estelares.</p>
-                        <div class="checkbox-grid">
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="juegos-favoritos" value="Catan"> Catan (Estrategia)
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="juegos-favoritos" value="Carcassonne"> Carcassonne (Estrategia)
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="juegos-favoritos" value="Splendor"> Splendor (Estrategia)
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="juegos-favoritos" value="Ticket to Ride"> Ticket to Ride (Familiar)
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="juegos-favoritos" value="Dixit"> Dixit (Familiar)
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="juegos-favoritos" value="King of Tokyo"> King of Tokyo (Familiar)
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="juegos-favoritos" value="Exploding Kittens"> Exploding Kittens (Party)
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="juegos-favoritos" value="Dobble"> Dobble (Party)
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="juegos-favoritos" value="Jungle Speed"> Jungle Speed (Party)
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="juegos-favoritos" value="Pandemic"> Pandemic (Cooperativo)
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="juegos-favoritos" value="Isla Prohibida"> Isla Prohibida (Cooperativo)
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="juegos-favoritos" value="The Mind"> The Mind (Cooperativo)
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Botones de Acción -->
-                    <div style="display: flex; gap: 15px; margin-top: 30px; flex-wrap: wrap;">
-                        <button type="submit" id="btn-submit" class="btn btn-primary" style="flex: 1; min-width: 140px;" disabled>Completar Registro</button>
-                        <button type="reset" id="btn-reset" class="btn btn-secondary" style="flex: 1; min-width: 140px;">Limpiar Formulario</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. Sección de Compradores Registrados (DOM Dinámico y Persistencia) -->
-    <section class="buyers-section">
-        <div class="container">
-            <h2 class="section-title">Compradores Registrados</h2>
-            <p style="text-align: center; color: var(--text-muted); margin-top: -30px; margin-bottom: 30px; font-size: 0.95rem;">
-                Registro en tiempo real de los arcanistas que acumulan recompensas en nuestra tienda.
-            </p>
-            <div id="no-buyers-msg" style="text-align: center; color: var(--text-muted); font-style: italic; padding: 40px 0;">
-                No hay compradores registrados todavía. ¡Sé el primero en la cofradía!
-            </div>
-            <div class="buyers-grid" id="buyers-grid">
-                <!-- Se inyectarán las tarjetas dinámicamente mediante JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. Pie de Página (Footer) -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="assets/logo_lagarto.png" alt="Lagarto Arcano Logo Footer" style="width: 32px; height: 32px; border-radius: 50%;">
-                    <div class="logo-text">Lagarto<span>Arcano</span></div>
+                    </form>
                 </div>
-                <ul class="footer-links">
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
-                    <li><a href="https://gatoarcano.cl/" target="_blank" rel="noopener">Inspirado en Gato Arcano</a></li>
-                </ul>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Lagarto Arcano. Trabajo Académico Universitario. Todos los derechos reservados. Desarrollado con 💚 en HTML5, CSS3 y JS.</p>
             </div>
         </div>
-    </footer>
+    </section>
 
-    <!-- Enlace a la lógica JS del formulario -->
+    <!-- Contenedor para Footer Dinámico -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Lógica global y de registro -->
+    <script src="js/main.js"></script>
     <script src="js/registro.js"></script>
 </body>
 </html>
